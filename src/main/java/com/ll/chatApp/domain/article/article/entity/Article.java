@@ -3,7 +3,6 @@ package com.ll.chatApp.domain.article.article.entity;
 import com.ll.chatApp.domain.article.article.articleComment.entity.ArticleComment;
 import com.ll.chatApp.domain.member.member.entity.Member;
 import com.ll.chatApp.global.jpa.BaseEntity;
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -42,5 +41,9 @@ public class Article extends BaseEntity {
         comments.add(comment);
 
 
+    }
+
+    public void removeComment(ArticleComment articleComment) {
+        comments.remove(articleComment);
     }
 }
