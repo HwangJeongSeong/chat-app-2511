@@ -12,10 +12,11 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class ArticleService {
     private final ArticleRepository articleRepository;
 
+    @Transactional
     public RsData<Article> write(Long memberId, String title, String content) {
         Article article = Article.builder()
                 .author(Member.builder().id(memberId).build())
@@ -28,16 +29,15 @@ public class ArticleService {
         return RsData.of("200", "글 작성 성공", article);
     }
 
-    public Optional<Article> findById(Long id) {
+    public Optional<Article> findById(long id) {
         return articleRepository.findById(id);
     }
 
-    public RsData<Article> modify(Article article, String title, String content) {
+    @Transactional
+    public void modify(Article article, String title, String content) {
         article.setTitle(title);
         article.setContent(content);
 
-        articleRepository.save(article);
-
-        return RsData.of("200", "글 수정 성공", article);
+//        articleRepository.save(article);
     }
 }
