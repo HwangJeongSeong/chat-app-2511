@@ -73,8 +73,8 @@ public class NotProd {
 
                 article1.addTag("자바");
                 article1.addTag("스프링");
-                article2.addTag("데이터베이스");
-                article2.addTag("JPA");
+                article2.addTags("데이터베이스", "hi");
+                article2.addTags("JPA", "hi");
             }
         };
 
