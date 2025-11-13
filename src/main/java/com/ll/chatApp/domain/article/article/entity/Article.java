@@ -64,7 +64,7 @@ public class Article extends BaseEntity {
     }
 
     public void addTags(String... tagContents) {
-        for( String tagContent : tagContents) {
+        for (String tagContent : tagContents) {
             addTag(tagContent);
         }
     }
@@ -72,7 +72,7 @@ public class Article extends BaseEntity {
     public String getTagsStr() {
         String tagsStr = tags.stream()
                 .map(ArticleTag::getContent)
-                .collect(Collectors.joining("#"));
+                .collect(Collectors.joining(" #"));
 
         if (tagsStr.isBlank()) {
             return "";

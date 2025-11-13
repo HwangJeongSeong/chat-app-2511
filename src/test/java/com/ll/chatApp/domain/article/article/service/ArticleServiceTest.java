@@ -1,7 +1,10 @@
 package com.ll.chatApp.domain.article.article.service;
 
 import com.ll.chatApp.domain.article.article.articleComment.entity.ArticleComment;
+import com.ll.chatApp.domain.article.article.articleComment.service.ArticleCommentService;
 import com.ll.chatApp.domain.article.article.entity.Article;
+import com.ll.chatApp.domain.article.articleTag.entity.ArticleTag;
+import com.ll.chatApp.domain.article.articleTag.service.ArticleTagService;
 import com.ll.chatApp.domain.member.member.entity.Member;
 import com.ll.chatApp.domain.member.member.service.MemberService;
 import com.ll.chatApp.global.rsData.RsData;
@@ -24,6 +27,10 @@ public class ArticleServiceTest {
     private ArticleService articleService;
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private ArticleCommentService articleCommentService;
+    @Autowired
+    private ArticleTagService articleTagService;
 
     @DisplayName("글 쓰기")
     @Test
@@ -110,5 +117,29 @@ public class ArticleServiceTest {
         String tagsStr = article1.getTagsStr();
 
         assertThat(tagsStr).isEqualTo("#자바 #백엔드");
+    }
+
+    @DisplayName("1번 게시물 toString")
+    @Test
+    void t10() {
+        Article article1 = articleService.findById(1L).get();
+
+        System.out.println(article1);
+    }
+
+    @DisplayName("1번 회원이 작성한 댓글들")
+    @Test
+    void t11() {
+        List<ArticleComment> articleComments = articleCommentService.findByAuthorId(1L);
+
+        assertThat(articleComments.size()).isGreaterThan(0);
+    }
+
+    @DisplayName("1번 회원이 작성한 태그들")
+    @Test
+    void t12() {
+        List<ArticleTag> articleTags = articleTagService.findByAuthorId(1L);
+
+        assertThat(articleTags.size()).isGreaterThan(0);
     }
 }
