@@ -70,6 +70,11 @@ public class NotProd {
                 articleRepository.save(article1);
                 articleRepository.save(article2);
                 articleRepository.save(article3);
+
+                article1.addTag("자바");
+                article1.addTag("스프링");
+                article2.addTag("데이터베이스");
+                article2.addTag("JPA");
             }
         };
 

@@ -1,6 +1,7 @@
 package com.ll.chatApp.domain.article.article.entity;
 
 import com.ll.chatApp.domain.article.article.articleComment.entity.ArticleComment;
+import com.ll.chatApp.domain.article.articleTag.entity.ArticleTag;
 import com.ll.chatApp.domain.member.member.entity.Member;
 import com.ll.chatApp.global.jpa.BaseEntity;
 import jakarta.persistence.Entity;
@@ -46,5 +47,18 @@ public class Article extends BaseEntity {
 
     public void removeComment(ArticleComment articleComment) {
         comments.remove(articleComment);
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "article", cascade = ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<ArticleTag> tags = new ArrayList<>();
+
+    public void addTag(String content) {
+        ArticleTag tag = ArticleTag.builder()
+                .article(this)
+                .content(content)
+                .build();
+
+        tags.add(tag);
     }
 }
