@@ -17,6 +17,6 @@ public class ApiChatRoomController {
 
     @PostMapping
     public String createChatRoom() {
-        return "채팅방 생성 완료";
+        return "채팅방 생성완료";
     }
 }

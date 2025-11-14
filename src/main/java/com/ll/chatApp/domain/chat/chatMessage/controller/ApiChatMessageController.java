@@ -16,5 +16,3 @@ public class ApiChatMessageController {
         return roomId + "번 채팅방 메세지 생성완료";
     }
 }
-
-

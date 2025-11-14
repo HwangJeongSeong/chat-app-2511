@@ -2,14 +2,9 @@ package com.ll.chatApp.domain.chat.chatMessage.entity;
 
 import com.ll.chatApp.domain.chat.chatRoom.entity.ChatRoom;
 import com.ll.chatApp.global.jpa.BaseEntity;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
@@ -18,14 +13,10 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Setter
 @SuperBuilder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(callSuper = true, exclude = "chatRoom")
+@ToString(callSuper = true)
 public class ChatMessage extends BaseEntity {
-    @Column(nullable = false, length = 50)
     private String writerName;
-    @Column(nullable = false, length = 1000)
     private String content;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "chat_room_id")
+    @ManyToOne
     private ChatRoom chatRoom;
 }

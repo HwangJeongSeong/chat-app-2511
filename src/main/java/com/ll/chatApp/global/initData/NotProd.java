@@ -62,9 +62,9 @@ public class NotProd {
 
         article1.addTag("자바");
         article1.addTag("백엔드");
-        article2.addTags("프레임워크", "스프링부트");
+        article2.addTag("프레임워크", "스프링부트");
 
-        article4.addTags("자바", "스프링부트");
+        article4.addTag("자바", "스프링부트");
 
         IntStream.rangeClosed(5, 120).forEach(
                 i -> {

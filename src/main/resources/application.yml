@@ -5,8 +5,7 @@ spring:
     cache: false
   profiles:
     active: dev
-    include:
-      - secret
+    include: secret
   logging:
     level:
       com.ll.chatApp: DEBUG
@@ -15,7 +14,7 @@ spring:
       org.springframework.transaction.interceptor: TRACE
   jpa:
     hibernate:
-      ddl_auto: update
+      ddl-auto: create
     properties:
       hibernate:
         show_sql: true

@@ -30,41 +30,41 @@ public class Article extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Member author;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "article", cascade = ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "article", cascade = ALL, orphanRemoval = true)
     @Builder.Default
+    @ToString.Exclude
     private List<ArticleComment> comments = new ArrayList<>();
 
-    public void addComment(Member memeberAuthor, String commentBody) {
+    public void addComment(Member memberAuthor, String commentBody) {
         ArticleComment comment = ArticleComment.builder()
                 .article(this)
-                .author(memeberAuthor)
+                .author(memberAuthor)
                 .body(commentBody)
                 .build();
 
         comments.add(comment);
-
-
     }
 
     public void removeComment(ArticleComment articleComment) {
         comments.remove(articleComment);
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "article", cascade = ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "article", cascade = ALL, orphanRemoval = true)
     @Builder.Default
+    @ToString.Exclude
     private List<ArticleTag> tags = new ArrayList<>();
 
-    public void addTag(String content) {
+    public void addTag(String tagContent) {
         ArticleTag tag = ArticleTag.builder()
                 .article(this)
-                .content(content)
+                .content(tagContent)
                 .build();
 
         tags.add(tag);
     }
 
-    public void addTags(String... tagContents) {
-        for (String tagContent : tagContents) {
+    public void addTag(String... tagContents) {
+        for( String tagContent : tagContents) {
             addTag(tagContent);
         }
     }
