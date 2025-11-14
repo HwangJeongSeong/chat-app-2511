@@ -1,6 +1,6 @@
-package com.ll.chatApp.domain.article.article.articleComment.repository;
+package com.ll.chatApp.domain.article.articleComment.repository;
 
-import com.ll.chatApp.domain.article.article.articleComment.entity.ArticleComment;
+import com.ll.chatApp.domain.article.articleComment.entity.ArticleComment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

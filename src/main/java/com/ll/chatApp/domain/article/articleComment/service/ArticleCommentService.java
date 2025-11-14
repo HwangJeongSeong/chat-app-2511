@@ -1,7 +1,7 @@
-package com.ll.chatApp.domain.article.article.articleComment.service;
+package com.ll.chatApp.domain.article.articleComment.service;
 
-import com.ll.chatApp.domain.article.article.articleComment.entity.ArticleComment;
-import com.ll.chatApp.domain.article.article.articleComment.repository.ArticleCommentRepository;
+import com.ll.chatApp.domain.article.articleComment.entity.ArticleComment;
+import com.ll.chatApp.domain.article.articleComment.repository.ArticleCommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
